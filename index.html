@@ -40,7 +40,7 @@
         
 
       if (eventName) {
-        MP.api.segment(eventName, propName, dateRange).done(function(results) {
+        MP.api.segment(eventName, propName, params).done(function(results) {
           eventGraph.MPChart('setData', results);
         });
       }
