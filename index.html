@@ -22,12 +22,12 @@
       var eventName = "Script Complete";
       var propName  = "Event Count (unique)";
       var project_id = "367999";
-      var where_clause = "properties['Project ID'] == "+project_id+"";
+      var where_clause = "properties['Project ID'] == '"+project_id+"'";
       var params = {
-        from: moment().subtract(24, 'days'),    
+        from: moment().subtract(24, 'weeks'),    
         to: moment(),                           
         type: 'unique',                        
-        unit: 'day',                            
+        unit: 'week',                            
         'where': where_clause,     
         'method': 'average'                   
       }
