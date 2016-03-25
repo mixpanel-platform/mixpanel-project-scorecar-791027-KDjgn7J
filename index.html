@@ -33,6 +33,7 @@
       }
     
       MP.api.segment(eventName, propName, params).done(function(results) {
+        console.log(results.values());
         eventGraph.MPChart('setData', results);
       });
 
