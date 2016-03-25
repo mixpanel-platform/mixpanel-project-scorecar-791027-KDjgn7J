@@ -31,8 +31,9 @@
       }
     
       MP.api.segment(eventName, propName, params).done(function(results) {
-        console.log(results.values());
-        eventGraph.MPChart('setData', results);
+        var realResults = {};
+        realResults['Unique Event Count'] = results.values();
+        eventGraph.MPChart('setData', realResults);
       });
 
       
