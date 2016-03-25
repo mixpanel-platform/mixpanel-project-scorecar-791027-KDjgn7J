@@ -25,7 +25,8 @@
       var where_clause = 'properties["Project ID"] == '+project_id;
       var params = {
         from: moment().subtract(24, 'weeks'),    
-        to: moment(),                           
+        to: moment(), 
+        unit: 'week'
       }
     
       MP.api.segment(eventName, propName, params).done(function(results) {
