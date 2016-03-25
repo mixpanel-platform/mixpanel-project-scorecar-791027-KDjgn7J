@@ -28,7 +28,8 @@
         to: moment(), 
         unit: 'week',
         method: 'average',
-        where: 'properties["Project ID"] == 3'
+        where: 'properties["Project ID"] == "3"',
+        limit: 255
       }
     
       MP.api.segment(eventName, propName, params).done(function(results) {
