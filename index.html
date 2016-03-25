@@ -29,7 +29,8 @@
         unit: 'week',
         method: 'average',
         where: 'properties["Project ID"] == "447055"',
-        limit: 255
+        limit: 255,
+        type: 'unique'
       }
       MP.api.segment(eventName, propName, params).done(function(results) {
         var realResults = {};
