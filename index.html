@@ -26,18 +26,12 @@
       var params = {
         from: moment().subtract(24, 'weeks'),    
         to: moment(),                           
-        type: 'unique',                        
-        unit: 'week',                            
         'where': where_clause,     
-        'method': 'average'                   
       }
-        
-
-      if (eventName) {
-        MP.api.segment(eventName, propName, params).done(function(results) {
-          eventGraph.MPChart('setData', results);
-        });
-      }
+    
+      MP.api.segment(eventName, propName, params).done(function(results) {
+        eventGraph.MPChart('setData', results);
+      });
 
       
     </script>
