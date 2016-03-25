@@ -27,7 +27,8 @@
         from: moment().subtract(24, 'weeks'),    
         to: moment(), 
         unit: 'week',
-        method: 'average'
+        method: 'average',
+        where: where_clause
       }
     
       MP.api.segment(eventName, propName, params).done(function(results) {
