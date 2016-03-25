@@ -24,34 +24,28 @@
         firstColHeader: 'Event'
       });*/
 
-      var runQuery = function() {
-        var eventName = "Script Complete";
-        var propName  = "Event Count (unique)";
-        var project_id = "367999";
-        var where_clause = "properties['Project ID'] == '"+project_id+"'";
-        var params = {
-          from: moment().subtract(24, 'weeks'),    
-          to: moment(),                           
-          type: 'unique',                        
-          unit: 'week',                            
-          'where': where_clause,     
-          'method': 'average'                   
-        }
-          
 
-        if (eventName) {
-          MP.api.segment(eventName, propName, dateRange).done(function(results) {
-            eventGraph.MPChart('setData', results);
-          });
-        }
-      };
-      eventSelect.on('change', function(e, eventName) {
-        propSelect.MPPropertySelect('setEvent', eventName);
-        $("#by").show();
-        runQuery();
-      });
-      propSelect.on('change', runQuery);
-      dateSelect.on('change', runQuery);
+      var eventName = "Script Complete";
+      var propName  = "Event Count (unique)";
+      var project_id = "367999";
+      var where_clause = "properties['Project ID'] == '"+project_id+"'";
+      var params = {
+        from: moment().subtract(24, 'weeks'),    
+        to: moment(),                           
+        type: 'unique',                        
+        unit: 'week',                            
+        'where': where_clause,     
+        'method': 'average'                   
+      }
+        
+
+      if (eventName) {
+        MP.api.segment(eventName, propName, dateRange).done(function(results) {
+          eventGraph.MPChart('setData', results);
+        });
+      }
+
+      
     </script>
   </body>
 </html>
