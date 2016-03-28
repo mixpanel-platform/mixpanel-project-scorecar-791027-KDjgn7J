@@ -39,6 +39,12 @@
       <br clear="all" />
       <hr /><br clear="all" />
       
+      <h1>Unique Property Count</h1><br clear="all" />
+      <div style="clear: both;"></div>
+      <div id="graph3"></div>
+      <br clear="all" />
+      <hr /><br clear="all" />
+      
     </div>
     <script>
     
@@ -64,18 +70,16 @@
 
       /* People profile count graph */
       var eventGraph2  = $('#graph2').MPChart({chartType: 'line'});
-      var eventName = "Script Complete";
       var propName  = "People Prof Count";
-      var project_id = "447055";
-      var params = {
-        from: moment().subtract(8, 'weeks'),    
-        to: moment(), 
-        unit: 'week',
-        method: 'average',
-        where: 'properties["Project ID"] == "'+project_id+'"',
-        limit: 255,
-        type: 'unique'
-      }
+      MP.api.segment(eventName, propName, params).done(function(results) {
+        var realResults = {};
+        realResults['People Profile Count'] = results.values();
+        eventGraph2.MPChart('setData', realResults);
+      });
+      
+      /* Unique property count graph */
+      var eventGraph3  = $('#graph3').MPChart({chartType: 'line'});
+      var propName  = "Prop Count (unique)";
       MP.api.segment(eventName, propName, params).done(function(results) {
         var realResults = {};
         realResults['People Profile Count'] = results.values();
