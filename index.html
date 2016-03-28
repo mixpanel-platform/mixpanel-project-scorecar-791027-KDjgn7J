@@ -33,9 +33,16 @@
       <br clear="all" />
       <hr /><br clear="all" />
       
+      <h1>People Profiles</h1><br clear="all" />
+      <div style="clear: both;"></div>
+      <div id="graph2"></div>
+      <br clear="all" />
+      <hr /><br clear="all" />
+      
     </div>
     <script>
     
+      /* Unique event count graph */
       var eventGraph  = $('#graph').MPChart({chartType: 'line'});
       var eventName = "Script Complete";
       var propName  = "Event Count (unique)";
@@ -55,7 +62,25 @@
         eventGraph.MPChart('setData', realResults);
       });
 
-      
+      /* People profile count graph */
+      var eventGraph  = $('#graph2').MPChart({chartType: 'line'});
+      var eventName = "Script Complete";
+      var propName  = "People Prof Count";
+      var project_id = "447055";
+      var params = {
+        from: moment().subtract(8, 'weeks'),    
+        to: moment(), 
+        unit: 'week',
+        method: 'average',
+        where: 'properties["Project ID"] == "'+project_id+'"',
+        limit: 255,
+        type: 'unique'
+      }
+      MP.api.segment(eventName, propName, params).done(function(results) {
+        var realResults = {};
+        realResults['Unique Event Count'] = results.values();
+        eventGraph.MPChart('setData', realResults);
+      });
     </script>
   </body>
 </html>
