@@ -59,7 +59,9 @@
       var eventName = "Script Complete";
       var propName  = "Event Count (unique)";
       var project_id = getParameterByName("project_id", window.location.href);
-      alert(project_id);
+      if(project_id == null){
+        // Shouldn't get here...
+      }
       var params = {
         from: moment().subtract(8, 'weeks'),    
         to: moment(), 
