@@ -59,6 +59,7 @@
       var eventName = "Script Complete";
       var propName  = "Event Count (unique)";
       var project_id = "447055";
+      alert(getParameterByName("api_key", window.location.href));
       var params = {
         from: moment().subtract(8, 'weeks'),    
         to: moment(), 
@@ -100,6 +101,18 @@
         realResults['Active Campaign Count'] = results.values();
         eventGraph4.MPChart('setData', realResults);
       });
+      
+      /* Helper function for URL Params */
+      function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          url = url.toLowerCase();   
+          name = name.replace(/[\[\]]/g, "\\$&").toLowerCase();
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
     </script>
   </body>
 </html>
