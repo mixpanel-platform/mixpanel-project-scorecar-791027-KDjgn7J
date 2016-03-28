@@ -45,6 +45,12 @@
       <br clear="all" />
       <hr /><br clear="all" />
       
+      <h1>Active Campaign Count</h1><br clear="all" />
+      <div style="clear: both;"></div>
+      <div id="graph4"></div>
+      <br clear="all" />
+      <hr /><br clear="all" />
+      
     </div>
     <script>
     
@@ -82,8 +88,17 @@
       var propName  = "Prop Count (unique)";
       MP.api.segment(eventName, propName, params).done(function(results) {
         var realResults = {};
-        realResults['People Profile Count'] = results.values();
+        realResults['Unique Property Count'] = results.values();
         eventGraph3.MPChart('setData', realResults);
+      });
+      
+      /* Active campaign count graph */
+      var eventGraph4  = $('#graph4').MPChart({chartType: 'line'});
+      var propName  = "Active Campaign Count";
+      MP.api.segment(eventName, propName, params).done(function(results) {
+        var realResults = {};
+        realResults['Active Campaign Count'] = results.values();
+        eventGraph4.MPChart('setData', realResults);
       });
     </script>
   </body>
