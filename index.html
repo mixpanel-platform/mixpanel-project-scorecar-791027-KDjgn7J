@@ -63,7 +63,7 @@
       });
 
       /* People profile count graph */
-      var eventGraph  = $('#graph2').MPChart({chartType: 'line'});
+      var eventGraph2  = $('#graph2').MPChart({chartType: 'line'});
       var eventName = "Script Complete";
       var propName  = "People Prof Count";
       var project_id = "447055";
@@ -79,7 +79,7 @@
       MP.api.segment(eventName, propName, params).done(function(results) {
         var realResults = {};
         realResults['Unique Event Count'] = results.values();
-        eventGraph.MPChart('setData', realResults);
+        eventGraph2.MPChart('setData', realResults);
       });
     </script>
   </body>
